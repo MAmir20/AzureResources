@@ -1,0 +1,27 @@
+﻿@page
+@model AzureResources.Pages.ResourcesModel
+@{
+    ViewData["Title"] = "Azure Resources";
+}
+
+<h1>Azure Resources</h1>
+
+@if (Model.Resources.Count == 0)
+{
+    <p>No resources found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var resource in Model.Resources)
+        {
+            <li>
+                <strong>@resource.Name</strong> - @resource.Type<br />
+                Location: @resource.Location<br />
+                Tags: @string.Join(", ", resource.Tags)<br />
+                Managed By: @resource.ManagedBy<br />
+                Kind: @resource.Kind<br />
+            </li>
+        }
+    </ul>
+}
